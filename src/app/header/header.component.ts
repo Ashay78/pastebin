@@ -20,24 +20,24 @@ export class HeaderComponent extends SharedPage implements OnInit {
     private router: Router
   ) {
     super(injector);
-    router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe((event: any) => {
-
-      console.log(event.url);
-      if (event.url.includes('/new')) {
-        this.showSaveButton = true;
-        this.showNewButton = false;
-        this.showUpdateButton = false;
-      } else {
-        this.showSaveButton = false;
-        this.showNewButton = true;
-        this.showUpdateButton = true;
-      }
-    });
   }
 
   ngOnInit(): void {
+    this.sharedService.pagePastebin.subscribe((page) => {
+      switch (page) {
+        case 1:
+          this.showSaveButton = true;
+          this.showNewButton = false;
+          this.showUpdateButton = false;
+          break;
+        case 2:
+          this.showSaveButton = false;
+          this.showNewButton = true;
+          this.showUpdateButton = true;
+          break;
+        default:
+      }
+    });
   }
 
   new() {

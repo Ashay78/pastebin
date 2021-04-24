@@ -29,6 +29,7 @@ export class NewPastebinComponent extends SharedPage implements OnInit {
   }
 
   ngOnInit(): void {
+    this.sharedService.emitPagePastebin(1);
     this.sharedService.savePastebin.subscribe(() => {
       this.save();
     });

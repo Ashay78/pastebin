@@ -10,7 +10,7 @@ import {Pastebin} from '../models/pastebin';
 })
 
 export class ApiPastebinService {
-  private static URL = 'https://pastebin.gcousin.site/api/pastebin';
+  private static URL = 'https://pastebin.gcousin.net/api/pastebin';
 
   constructor(protected httpClient: HttpClient) {
   }
